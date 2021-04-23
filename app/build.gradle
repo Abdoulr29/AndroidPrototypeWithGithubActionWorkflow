@@ -20,6 +20,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    tasks.withType(Test) {
+        testLogging {
+            exceptionFormat "full"
+            events "started", "skipped", "passed", "failed"
+            showStandardStreams true
+        }
+    }
+
+//    tasks.withType(Test) {
+//        scanForTestClasses = false
+//        include "**/*Test.class" // whatever Ant pattern matches your test class files
+//    }
 }
 
 dependencies {
